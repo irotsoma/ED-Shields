@@ -457,8 +457,11 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
                 FieldInfo _LauncherFieldInfo = typeof(Projectile).GetField("launcher", BindingFlags.NonPublic | BindingFlags.Instance);
                 Patch.Patcher.LogNULL(_LauncherFieldInfo, "_LauncherFieldInfo");
                 Thing _Launcher = (Thing)_LauncherFieldInfo.GetValue(projectile);
-                Patch.Patcher.LogNULL(_Launcher, "_Launcher");
-
+                //Patch.Patcher.LogNULL(_Launcher, "_Launcher");
+                if (_Launcher == null)
+                {
+                    return false;
+                }
                 if (_Launcher.Faction.IsPlayer)
                 {
                     return false;
